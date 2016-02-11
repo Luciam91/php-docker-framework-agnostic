@@ -1,0 +1,17 @@
+application:
+  container_name: application
+  image: php:5.5-apache
+  ports:
+      - 10000:80
+  volumes:
+    - .:/var/www/html
+  links:
+    - database:database
+
+database:
+  container_name: mysql
+  image: mysql:5.6
+  ports:
+    - 10001:3306
+  environment:
+    - MYSQL_ROOT_PASSWORD=teamrock
